@@ -86,6 +86,13 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("News for you", style: TextStyle(color: Colors.black)),
+              ],
+            )
           ],
         ),
       ),
