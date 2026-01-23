@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:news_app_with_getx/view/Detail%20Page/Detail%20Page.dart';
 import 'package:news_app_with_getx/view/Home%20page/Home%20page.dart';
 
 void main() {
@@ -15,9 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
 
       theme: ThemeData(
-          textTheme: GoogleFonts.arimoTextTheme()),
+          textTheme: GoogleFonts.poppinsTextTheme()),
       debugShowCheckedModeBanner: false,
-      home:   HomePage(),
+      home:   DetailPage(),
 
     );
   }
