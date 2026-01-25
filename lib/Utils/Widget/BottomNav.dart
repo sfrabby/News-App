@@ -1,62 +1,81 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:news_app_with_getx/Controller/bottomNavC.dart';
 
 import '../../Config/AppColors.dart';
 
 class BottomNav extends StatelessWidget {
-  const BottomNav({
-    super.key,
-  });
-
+  BottomNav({super.key});
+  BottomNavController bottomNavController = BottomNavController();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 250,
+    return Obx(() {
+      return Container(
+        width: 250,
 
-      margin: EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
 
-      decoration: BoxDecoration(
-        color: SeconderyColor,
-        borderRadius: BorderRadius.circular(40),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            padding: EdgeInsets.all(5),
-            //margin: EdgeInsets.all(10),
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              color: MainColor,
-              borderRadius: BorderRadius.circular(100),
+        decoration: BoxDecoration(
+          color: SeconderyColor,
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            InkWell(
+              onTap: () {
+                bottomNavController.index.value = 0;
+              },
+              child: Container(
+                padding: EdgeInsets.all(5),
+                //margin: EdgeInsets.all(10),
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: MainColor,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Icon(Icons.home, size: 30, color: White),
+              ),
             ),
-            child: Icon(Icons.home, size: 30, color: White),
-          ),
-          Container(
-            padding: EdgeInsets.all(5),
-            //margin: EdgeInsets.all(10),
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              color: MainColor,
-              borderRadius: BorderRadius.circular(100),
+            InkWell(
+              onTap: () {
+                bottomNavController.index.value = 1;
+              },
+              child: Container(
+                padding: EdgeInsets.all(5),
+                //margin: EdgeInsets.all(10),
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: bottomNavController.index.value == 1
+                      ? MainColor
+                      : null,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Icon(Icons.person, size: 30, color: White),
+              ),
             ),
-            child: Icon(Icons.person, size: 30, color: White),
-          ),
-          Container(
-            padding: EdgeInsets.all(5),
-            //margin: EdgeInsets.all(10),
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              color: MainColor,
-              borderRadius: BorderRadius.circular(100),
+            InkWell(
+              onTap: () {
+                bottomNavController.index.value = 2;
+              },
+              child: Container(
+                padding: EdgeInsets.all(5),
+                //margin: EdgeInsets.all(10),
+                height: 50,
+                width: 50,
+                decoration: BoxDecoration(
+                  color: MainColor,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+                child: Icon(Icons.settings, size: 30, color: White),
+              ),
             ),
-            child: Icon(Icons.settings, size: 30, color: White),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }
