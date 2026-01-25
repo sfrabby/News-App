@@ -15,6 +15,12 @@ class HomePage extends StatelessWidget {
         backgroundColor: MainColor,
         title: Text("Samprotik Somoy", style: TextStyle(color: White)),
       ),
+      floatingActionButton: Container(
+        height: 100,
+        width: 200,
+        color: MainColor,
+        child: Row(),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
