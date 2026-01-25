@@ -33,7 +33,9 @@ class BottomNav extends StatelessWidget {
                 height: 50,
                 width: 50,
                 decoration: BoxDecoration(
-                  color: MainColor,
+                  color: bottomNavController.index.value == 0
+                      ? MainColor
+                      : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: Icon(Icons.home, size: 30, color: White),
@@ -51,7 +53,7 @@ class BottomNav extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: bottomNavController.index.value == 1
                       ? MainColor
-                      : null,
+                      : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: Icon(Icons.person, size: 30, color: White),
@@ -67,7 +69,9 @@ class BottomNav extends StatelessWidget {
                 height: 50,
                 width: 50,
                 decoration: BoxDecoration(
-                  color: MainColor,
+                  color: bottomNavController.index.value == 2
+                      ? MainColor
+                      : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: Icon(Icons.settings, size: 30, color: White),
