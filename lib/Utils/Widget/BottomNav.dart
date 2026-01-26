@@ -7,7 +7,7 @@ import '../../Config/AppColors.dart';
 
 class BottomNav extends StatelessWidget {
   BottomNav({super.key});
-  BottomNavController bottomNavController = BottomNavController();
+  BottomNavController bottomNavController = Get.put(BottomNavController());
   @override
   Widget build(BuildContext context) {
     return Obx(() {

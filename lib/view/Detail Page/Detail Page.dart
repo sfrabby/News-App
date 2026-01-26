@@ -16,8 +16,7 @@ class DetailPage extends StatelessWidget {
         backgroundColor: MainColor,
         title: Text("Samprotik Somoy", style: TextStyle(color: White)),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: BottomNav(),
+
 
       body: Padding(
         padding: EdgeInsetsGeometry.all(10),
