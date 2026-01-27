@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app_with_getx/Utils/Widget/BottomCard.dart';
 
 import '../../Config/AppColors.dart';
 
@@ -22,7 +23,13 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextField(
+
+                      cursorColor: Colors.black,
+
                       decoration: InputDecoration(
+                        hintText : "search here",
+                        hintStyle: TextStyle(color: White),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10),
                         fillColor: Colors.grey,
                         border: InputBorder.none,
                       ),
@@ -36,12 +43,13 @@ class ProfilePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       color: MainColor,
 
-
                     ),
                   )
                 ],
               ),
             ),
+
+            BottomCard()
           ],
         ),
       ),
