@@ -13,6 +13,21 @@ class ArticalPage extends StatelessWidget {
         backgroundColor: MainColor,
         title: Text("Samprotik Somoy", style: TextStyle(color: White)),
       ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Container(
+            height: 200,
+            width: double.infinity,
+            color: MainColor,
+          ),
+          Center(
+            child: CircleAvatar(radius: 100,
+            backgroundColor: MainColor,),
+          )
+        ],
+      ),
     );
+
   }
 }

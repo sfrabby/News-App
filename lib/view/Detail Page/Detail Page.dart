@@ -17,7 +17,6 @@ class DetailPage extends StatelessWidget {
         title: Text("Samprotik Somoy", style: TextStyle(color: White)),
       ),
 
-
       body: Padding(
         padding: EdgeInsetsGeometry.all(10),
         child: Column(

@@ -56,7 +56,7 @@ class BottomNav extends StatelessWidget {
                       : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
-                child: Icon(Icons.person, size: 30, color: White),
+                child: Icon(Icons.book, size: 30, color: White),
               ),
             ),
             InkWell(
@@ -74,7 +74,7 @@ class BottomNav extends StatelessWidget {
                       : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
-                child: Icon(Icons.settings, size: 30, color: White),
+                child: Icon(Icons.person, size: 30, color: White),
               ),
             ),
           ],
