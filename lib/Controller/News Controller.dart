@@ -13,9 +13,10 @@ class NewsController extends GetxController{
   void onInit() {
     // TODO: implement onInit
     super.onInit();
+    getNews();
   }
 
-  Future<Map> ()async  {
+  Future<Map> getNews ()async  {
     isLoading.value =true;
     var url = Uri.parse("https://newsapi.org/v2/everything?q=tesla&from=2025-12-28&sortBy=publishedAt&apiKey=56c0d5d277014ea5877ca61e1e131432");
     var response = await http.get(url);
@@ -32,6 +33,7 @@ class NewsController extends GetxController{
       log("server Error");
       isLoading.value =false;
     }
+    return {};
 
   }
 

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:news_app_with_getx/Config/AppColors.dart';
-
+import 'package:news_app_with_getx/Controller/News%20Controller.dart';
+import 'package:get/get.dart';
 import '../../Utils/Widget/BottomCard.dart';
 import '../../Utils/Widget/TopContainer.dart';
+import '../../Utils/Widget/TopNews.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+   HomePage({super.key});
+
+  final NewsController newsController = Get.put(NewsController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,20 @@ class HomePage extends StatelessWidget {
               ],
             ),
 
-            TopContainer(),
+            SizedBox(
+              height: 200,
+              child: ListView.builder(
+                itemCount: 5,
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) {
+                  News = newsController.
+                  return TNewsCont(img: img, title: title, Author: Author);
+                },
+              ),
+            ),
+
+
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
