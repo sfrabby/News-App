@@ -49,7 +49,7 @@ class TNewsCont extends StatelessWidget {
                   children: [
                     Text(
                       "Tranding",
-                      style: TextStyle(color: Colors.black, fontSize: 13),
+                      style: TextStyle(color: Colors.black, fontSize: 13,),
                     ),
                     Text(
                       "2 days ago",
@@ -58,6 +58,7 @@ class TNewsCont extends StatelessWidget {
                   ],
                 ),
                 Text( title,
+                  maxLines: 1,
                   style: TextStyle(
                     color: White,
                     fontSize: 15,

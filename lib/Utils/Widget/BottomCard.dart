@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_app_with_getx/model/News%20Model.dart';
 
 import '../../Config/AppColors.dart';
 

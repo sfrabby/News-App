@@ -4,7 +4,8 @@ import 'package:news_app_with_getx/Utils/Widget/BottomCard.dart';
 import '../../Config/AppColors.dart';
 
 class ProfilePage extends StatelessWidget {
-  ProfilePage({super.key});
+
+  ProfilePage({super.key, });
 
   @override
   Widget build(BuildContext context) {
