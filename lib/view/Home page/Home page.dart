@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
@@ -8,6 +9,7 @@ import '../../Controller/Bottom Controller.dart';
 import '../../Controller/News Controller.dart';
 import '../../Utils/Widget/BottomCard.dart';
 import '../../Utils/Widget/TopNews.dart';
+import '../Detail Page/Detail Page.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -58,11 +60,18 @@ class HomePage extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     var news = newsController.trNews[index];
-                    return TNewsCont(
-                      img: news.urlToImage ?? "https://via.placeholder.com/150",
-                      title: news.title ?? "No Title",
-                      Author: news.author ?? "Unknown",
-                      date: news.publishedAt.toString(),
+                    return InkWell(
+                      onTap: () {
+                        Get.to(() => DetailPage(news: news));
+                      },
+                      child: TNewsCont(
+                        img: news.urlToImage ?? "https://via.placeholder.com/150",
+                        // ১. টাইপো ফিক্স করা হয়েছে: Newa -> news.title
+                        title: news.title?? "No Title",
+                        // ২. Author ফিক্স: সরাসরি news.author ব্যবহার করুন
+                        Author: news.author ?? "Unknown Author",
+                        date: news.publishedAt.toString(),
+                      ),
                     );
                   },
                 ),

@@ -32,7 +32,7 @@ class NewsController extends GetxController {
         NewsModel res = NewsModel.fromJson(body);
 
         if (res.articles != null) {
-          trNews.assignAll(res.articles!);
+          trNews.assignAll(res.articles as Iterable<Articles>);
         }
       } else {
         log("Server Error: ${response.statusCode}");

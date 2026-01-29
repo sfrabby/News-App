@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:news_app_with_getx/Config/Size%20Box.dart';
+import 'package:news_app_with_getx/model/News%20Model.dart';
 
 import '../../Config/AppColors.dart';
 import '../../Utils/Widget/BottomNav.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({super.key});
+
+  final Articles news;
+  const DetailPage({super.key, required this.news});
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +29,13 @@ class DetailPage extends StatelessWidget {
               height: 300,
               width: double.infinity,
               decoration: BoxDecoration(
+                image: DecorationImage(image: NetworkImage(news.urlToImage ?? Icon(Icons.broken_image).toString()),fit: BoxFit.fill),
                 borderRadius: BorderRadius.circular(20),
                 color: MainColor,
               ),
             ),
             SizedBox(height: spaceBtwItem),
-            Text(
-              "HTTP fetching at runtime, ideal for development. Can also be used in production to reduce app size",
+            Text(news.title ?? "Unknown",
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
             ),
             SizedBox(height: spaceBtwSection),
@@ -39,12 +43,12 @@ class DetailPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("2 days ago", style: TextStyle(color: Colors.black)),
-                Text("Nazmul Islam", style: TextStyle(color: Colors.black)),
+                Text(news.author ?? "Unknown", style: TextStyle(color: Colors.black)),
               ],
             ),
             SizedBox(height: spaceBtwItem),
             Text(
-              "HTTP fetching at runtime, ideal for development. Can also be used in production to reduce app size HTTP fetching at runtime, ideal for development. Can also be used in production to reduce app size HTTP fetching at runtime, ideal for development. Can also be used in production to reduce app size HTTP fetching at runtime, ideal for development. Can also be used in production to reduce app size",
+              news.description!,
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
             ),
           ],
