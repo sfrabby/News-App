@@ -6,7 +6,8 @@ import 'package:news_app_with_getx/Controller/bottomNavC.dart';
 import '../../Config/AppColors.dart';
 
 class BottomNav extends StatelessWidget {
-  BottomNav({super.key});
+
+  BottomNav({super.key,});
   BottomNavController bottomNavController = Get.put(BottomNavController());
   @override
   Widget build(BuildContext context) {

@@ -65,10 +65,10 @@ class HomePage extends StatelessWidget {
                         Get.to(() => DetailPage(news: news));
                       },
                       child: TNewsCont(
-                        img: news.urlToImage ?? "https://via.placeholder.com/150",
-                        // ১. টাইপো ফিক্স করা হয়েছে: Newa -> news.title
-                        title: news.title?? "No Title",
-                        // ২. Author ফিক্স: সরাসরি news.author ব্যবহার করুন
+                        img:
+                            news.urlToImage ??
+                            "https://via.placeholder.com/150",
+                        title: news.title ?? "No Title",
                         Author: news.author ?? "Unknown Author",
                         date: news.publishedAt.toString(),
                       ),
@@ -102,11 +102,16 @@ class HomePage extends StatelessWidget {
                   itemCount: bottomController.BottomNews.length,
                   itemBuilder: (context, index) {
                     var bottomNews = bottomController.BottomNews[index];
-                    return BottomCard(
-                      image:
-                          bottomNews.urlToImage ??    
-                          "https://via.placeholder.com/150",
-                      title: bottomNews.title.toString() ?? "No Title Available",
+                    return InkWell(
+                      onTap: (){
+                        Get.to(()=>DetailPage(news: bottomNews,));
+                      },
+                      child: BottomCard(
+                        image:
+                            bottomNews.urlToImage ??
+                            Icon(Icons.broken_image).toString(),
+                        title: bottomNews.title.toString(),
+                      ),
                     );
                   },
                 );

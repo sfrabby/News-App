@@ -7,7 +7,8 @@ class BottomCard extends StatelessWidget {
   final String image;
   final String title;
 
-  const BottomCard({super.key, required this.image, required this.title});
+
+  const BottomCard({super.key, required this.image, required this.title,});
 
   @override
   Widget build(BuildContext context) {
