@@ -9,11 +9,13 @@ class TNewsCont extends StatelessWidget {
     required this.img,
     required this.title,
     required this.Author,
+    required this.date,
   });
 
   final String img;
   final String title;
   final String Author;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +25,19 @@ class TNewsCont extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       margin: EdgeInsets.all(8),
-      width: 180,
+      width: 170,
 
       child: Column(
         children: [
           Container(
-            margin: EdgeInsets.fromLTRB(5, 5, 5, 0),
-            height: 110,
-            child: Image.network(img),
-
+            margin: EdgeInsets.all(5),
+            height: 120,
             decoration: BoxDecoration(
-
-              boxShadow: [BoxShadow(color: Colors.grey)],
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(10),
+              image: DecorationImage(
+                image: NetworkImage(img),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           Padding(
@@ -47,17 +49,24 @@ class TNewsCont extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      "Tranding",
-                      style: TextStyle(color: Colors.black, fontSize: 13,),
+                    Flexible(
+                      child: Text(
+                        "Tranding",
+                        style: TextStyle(color: Colors.black, fontSize: 13),
+                      ),
                     ),
-                    Text(
-                      "2 days ago",
-                      style: TextStyle(color: Colors.black, fontSize: 13),
+                    Flexible(
+                      child: Text(
+                        date,
+                        maxLines: 1,
+                        style: TextStyle(color: Colors.black, fontSize: 13),
+                      ),
                     ),
                   ],
                 ),
-                Text( title,
+
+                Text(
+                  title,
                   maxLines: 1,
                   style: TextStyle(
                     color: White,
@@ -65,6 +74,7 @@ class TNewsCont extends StatelessWidget {
                     fontWeight: FontWeight.w200,
                   ),
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -72,7 +82,13 @@ class TNewsCont extends StatelessWidget {
                       child: Icon(Icons.person),
                       backgroundColor: SeconderyColor,
                     ),
-                    Text(Author),
+                    Expanded(
+                      child: Text(
+                        Author,
+                        maxLines: 1,
+                        style: TextStyle(fontSize: 15),
+                      ),
+                    ),
                   ],
                 ),
               ],
