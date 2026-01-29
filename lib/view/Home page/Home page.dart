@@ -4,6 +4,7 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '../../Config/AppColors.dart';
+import '../../Controller/Bottom Controller.dart';
 import '../../Controller/News Controller.dart';
 import '../../Utils/Widget/BottomCard.dart';
 import '../../Utils/Widget/TopNews.dart';
@@ -12,6 +13,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final NewsController newsController = Get.put(NewsController());
+  final BottomController bottomController = Get.put(BottomController());
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +25,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        // ১. পুরো Column টি স্ক্রলযোগ্য করতে চাইলে SingleChildScrollView ব্যবহার করা যায়, 
-        // তবে Expanded ব্যবহার করাই বুদ্ধিমানের কাজ।
+
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -32,7 +33,10 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                Text("Hottest News", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  "Hottest News",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 Text("see all", style: TextStyle(color: Colors.blue)),
               ],
             ),
@@ -41,9 +45,12 @@ class HomePage extends StatelessWidget {
             // ১. Hottest News Section (Horizontal)
             Obx(() {
               if (newsController.isLoading.value) {
-                return const SizedBox(height: 250, child: Center(child: CircularProgressIndicator()));
+                return const SizedBox(
+                  height: 250,
+                  child: Center(child: CircularProgressIndicator()),
+                );
               }
-              // Horizontal ListView কে অবশ্যই SizedBox দিতে হবে, Expanded নয়।
+
               return SizedBox(
                 height: 250,
                 child: ListView.builder(
@@ -54,7 +61,8 @@ class HomePage extends StatelessWidget {
                     return TNewsCont(
                       img: news.urlToImage ?? "https://via.placeholder.com/150",
                       title: news.title ?? "No Title",
-                      Author: news.author ?? "Unknown", date: news.publishedAt.toString(),
+                      Author: news.author ?? "Unknown",
+                      date: news.publishedAt.toString(),
                     );
                   },
                 ),
@@ -66,24 +74,31 @@ class HomePage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
-                Text("News for you", style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(
+                  "News for you",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
                 Text("see all", style: TextStyle(color: Colors.blue)),
               ],
             ),
 
-            // ২. News for you Section (Vertical)
-            // সমাধান: Column এর ভেতর Vertical ListView থাকলে তাকে Expanded দিয়ে ঘিরে দিতে হয়।
             Expanded(
               child: Obx(() {
                 if (newsController.isLoading.value) {
                   return const Center(child: CircularProgressIndicator());
                 }
                 return ListView.builder(
-                  shrinkWrap: true, // এটি লিস্টকে টাইট রাখতে সাহায্য করে
+                  shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
-                  itemCount: newsController.trNews.length,
+                  itemCount: bottomController.BottomNews.length,
                   itemBuilder: (context, index) {
-                    return BottomCard();
+                    var bottomNews = bottomController.BottomNews[index];
+                    return BottomCard(
+                      image:
+                          bottomNews.urlToImage ??    
+                          "https://via.placeholder.com/150",
+                      title: bottomNews.title.toString() ?? "No Title Available",
+                    );
                   },
                 );
               }),

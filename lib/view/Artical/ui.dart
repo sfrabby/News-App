@@ -50,7 +50,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
 
-            BottomCard()
+            BottomCard(image: '', title: '',)
           ],
         ),
       ),
