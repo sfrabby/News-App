@@ -102,7 +102,7 @@ class HomePage extends StatelessWidget {
 
             Expanded(
               child: Obx(() {
-                // যদি নিউজ বা বটম নিউজ যেকোনো একটি লোড হতে থাকে, তবে শিমার দেখাবে
+
                 if (newsController.isLoading.value ||
                     bottomController.isLoading.value) {
                   return ListView.builder(
