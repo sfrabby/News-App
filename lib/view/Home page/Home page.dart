@@ -7,6 +7,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import '../../Config/AppColors.dart';
 import '../../Controller/Bottom Controller.dart';
 import '../../Controller/News Controller.dart';
+import '../../Utils/Shimmer/Top News.dart';
 import '../../Utils/Widget/BottomCard.dart';
 import '../../Utils/Widget/TopNews.dart';
 import '../Detail Page/Detail Page.dart';
@@ -47,10 +48,7 @@ class HomePage extends StatelessWidget {
             // ১. Hottest News Section (Horizontal)
             Obx(() {
               if (newsController.isLoading.value) {
-                return const SizedBox(
-                  height: 250,
-                  child: Center(child: CircularProgressIndicator()),
-                );
+                return const TNewsShimmer();
               }
 
               return SizedBox(
