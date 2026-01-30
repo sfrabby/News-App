@@ -7,6 +7,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import '../../Config/AppColors.dart';
 import '../../Controller/Bottom Controller.dart';
 import '../../Controller/News Controller.dart';
+import '../../Utils/Shimmer/Bottom Card shimmer.dart';
 import '../../Utils/Shimmer/Top News.dart';
 import '../../Utils/Widget/BottomCard.dart';
 import '../../Utils/Widget/TopNews.dart';
@@ -48,7 +49,17 @@ class HomePage extends StatelessWidget {
             // ১. Hottest News Section (Horizontal)
             Obx(() {
               if (newsController.isLoading.value) {
-                return const TNewsShimmer();
+                return SizedBox(
+                  height: 250,
+                  child: ListView.builder(
+                    itemCount: 5,
+                    scrollDirection: Axis.horizontal,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return const TNewsShimmer();
+                    },
+                  ),
+                );
               }
 
               return SizedBox(
@@ -91,24 +102,29 @@ class HomePage extends StatelessWidget {
 
             Expanded(
               child: Obx(() {
-                if (newsController.isLoading.value) {
-                  return const Center(child: CircularProgressIndicator());
+                // যদি নিউজ বা বটম নিউজ যেকোনো একটি লোড হতে থাকে, তবে শিমার দেখাবে
+                if (newsController.isLoading.value ||
+                    bottomController.isLoading.value) {
+                  return ListView.builder(
+                    itemCount: 6, // কয়টি শিমার কার্ড দেখাবে
+                    itemBuilder: (context, index) => const BottomCardShimmer(),
+                  );
                 }
+
                 return ListView.builder(
-                  shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
                   itemCount: bottomController.BottomNews.length,
                   itemBuilder: (context, index) {
                     var bottomNews = bottomController.BottomNews[index];
                     return InkWell(
-                      onTap: (){
-                        Get.to(()=>DetailPage(news: bottomNews,));
+                      onTap: () {
+                        Get.to(() => DetailPage(news: bottomNews));
                       },
                       child: BottomCard(
                         image:
                             bottomNews.urlToImage ??
                             Icon(Icons.broken_image).toString(),
-                        title: bottomNews.title.toString(),
+                        title: bottomNews.title ?? "No Title Available",
                       ),
                     );
                   },
