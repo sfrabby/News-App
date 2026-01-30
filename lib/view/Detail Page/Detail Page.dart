@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:news_app_with_getx/Config/Size%20Box.dart';
 import 'package:news_app_with_getx/model/News%20Model.dart';
@@ -19,6 +21,9 @@ class DetailPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: MainColor,
         title: Text("Samprotik Somoy", style: TextStyle(color: White)),
+        leading: IconButton(onPressed: (){
+          Get.back();
+        }, icon: Icon(Icons.arrow_back, color: White,),)
       ),
 
       body: Padding(

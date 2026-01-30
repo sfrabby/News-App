@@ -38,6 +38,7 @@ dependencies:
   get: ^4.7.3
   hexcolor: ^3.0.2
   google_fonts: ^8.0.0
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:

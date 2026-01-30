@@ -74,13 +74,15 @@ class TNewsCont extends StatelessWidget {
                     fontWeight: FontWeight.w200,
                   ),
                 ),
+                
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     CircleAvatar(
-                      child: Icon(Icons.person),
-                      backgroundColor: SeconderyColor,
+                      radius: 15,
+                      child: Icon(Icons.person, color: White,),
+                      backgroundColor: MainColor,
                     ),
                     Expanded(
                       child: Text(
