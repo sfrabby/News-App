@@ -13,7 +13,7 @@ class BottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return Container(
-        width: 250,
+        width: 200,
         height: 50,
 
         margin: EdgeInsets.all(10),
@@ -59,24 +59,6 @@ class BottomNav extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                 ),
                 child: Icon(Icons.book, size: 30, color: White),
-              ),
-            ),
-            InkWell(
-              onTap: () {
-                bottomNavController.index.value = 2;
-              },
-              child: Container(
-                padding: EdgeInsets.all(5),
-                //margin: EdgeInsets.all(10),
-                height: 40,
-                width: 40,
-                decoration: BoxDecoration(
-                  color: bottomNavController.index.value == 2
-                      ? SeconderyColor
-                      : Colors.grey,
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Icon(Icons.person, size: 30, color: White),
               ),
             ),
           ],

@@ -12,6 +12,7 @@ import '../../Utils/Shimmer/Top News.dart';
 import '../../Utils/Widget/BottomCard.dart';
 import '../../Utils/Widget/TopNews.dart';
 import '../Detail Page/Detail Page.dart';
+import '../For you see all/ui.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -91,12 +92,16 @@ class HomePage extends StatelessWidget {
 
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   "News for you",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Text("see all", style: TextStyle(color: Colors.blue)),
+                InkWell(
+                  onTap: (){
+                    Get.to(()=>nforyou());
+                  },
+                    child: const Text("see all", style: TextStyle(color: Colors.blue))),
               ],
             ),
 
@@ -106,14 +111,14 @@ class HomePage extends StatelessWidget {
                 if (newsController.isLoading.value ||
                     bottomController.isLoading.value) {
                   return ListView.builder(
-                    itemCount: 6, // কয়টি শিমার কার্ড দেখাবে
+                    itemCount: 6,
                     itemBuilder: (context, index) => const BottomCardShimmer(),
                   );
                 }
 
                 return ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: bottomController.BottomNews.length,
+                  itemCount: 6,
                   itemBuilder: (context, index) {
                     var bottomNews = bottomController.BottomNews[index];
                     return InkWell(
