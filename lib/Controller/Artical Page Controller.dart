@@ -4,21 +4,21 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:news_app_with_getx/model/News%20Model.dart';
 
-class NewsController extends GetxController {
+class ArticalController extends GetxController {
   RxBool isLoading = false.obs;
 
-  RxList<Articles> trNews = <Articles>[].obs;
+  RxList<Articles> ArticalNews = <Articles>[].obs;
 
   @override
   void onInit() {
     super.onInit();
-    getNews();
+    getArtical();
   }
 
-  Future<void> getNews() async {
+  Future<void> getArtical() async {
     try {
       isLoading.value = true;
-      trNews.clear();
+      ArticalNews.clear();
 
       var url = Uri.parse(
         "https://newsapi.org/v2/everything?q=apple&from=2026-01-28&to=2026-01-28&sortBy=popularity&apiKey=56c0d5d277014ea5877ca61e1e131432",
@@ -32,7 +32,7 @@ class NewsController extends GetxController {
         NewsModel res = NewsModel.fromJson(body);
 
         if (res.articles != null) {
-          trNews.assignAll(res.articles as Iterable<Articles>);
+          ArticalNews.assignAll(res.articles as Iterable<Articles>);
         }
       } else {
         log("Server Error: ${response.statusCode}");
