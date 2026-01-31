@@ -55,23 +55,22 @@ class ProfilePage extends StatelessWidget {
 
             Expanded(
               child: Obx(() {
-                // ১. সঠিক কন্ডিশন চেক (isLoading.value)
-                if (ArticalController.isLoading.value) {
+                if (articalController.isLoading.value) {
                   return ListView.builder(
                     itemCount: 5,
                     itemBuilder: (context, index) => const BottomCardShimmer(),
                   );
                 }
 
-                if (ArticalController.ArticalNews.isEmpty) {
+                if (articalController.ArticalNews.isEmpty) {
                   return const Center(child: Text("No News Found"));
                 }
 
                 return ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: ArticalController.ArticalNews.length,
+                  itemCount: articalController.ArticalNews.length,
                   itemBuilder: (context, index) {
-                    var article = ArticalController.ArticalNews[index];
+                    var article = articalController.ArticalNews[index];
 
                     return InkWell(
                       onTap: () {

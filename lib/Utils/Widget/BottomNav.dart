@@ -14,11 +14,12 @@ class BottomNav extends StatelessWidget {
     return Obx(() {
       return Container(
         width: 250,
+        height: 50,
 
         margin: EdgeInsets.all(10),
 
         decoration: BoxDecoration(
-          color: SeconderyColor,
+          color: MainColor,
           borderRadius: BorderRadius.circular(40),
         ),
         child: Row(
@@ -31,11 +32,11 @@ class BottomNav extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(5),
                 //margin: EdgeInsets.all(10),
-                height: 50,
-                width: 50,
+                height: 40,
+                width: 40,
                 decoration: BoxDecoration(
                   color: bottomNavController.index.value == 0
-                      ? MainColor
+                      ? SeconderyColor
                       : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
@@ -49,11 +50,11 @@ class BottomNav extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(5),
                 //margin: EdgeInsets.all(10),
-                height: 50,
-                width: 50,
+                height: 40,
+                width: 40,
                 decoration: BoxDecoration(
                   color: bottomNavController.index.value == 1
-                      ? MainColor
+                      ? SeconderyColor
                       : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
@@ -67,11 +68,11 @@ class BottomNav extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.all(5),
                 //margin: EdgeInsets.all(10),
-                height: 50,
-                width: 50,
+                height: 40,
+                width: 40,
                 decoration: BoxDecoration(
                   color: bottomNavController.index.value == 2
-                      ? MainColor
+                      ? SeconderyColor
                       : Colors.grey,
                   borderRadius: BorderRadius.circular(100),
                 ),
