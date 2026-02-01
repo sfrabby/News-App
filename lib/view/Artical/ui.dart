@@ -10,6 +10,7 @@ class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
 
   final ArticalController articalController = Get.put(ArticalController());
+  final TextEditingController searchC = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -17,25 +18,27 @@ class ProfilePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
+            // --- Search Bar Section ---
             Container(
-              margin: EdgeInsets.all(5),
+              margin: const EdgeInsets.all(5),
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.grey,
+                color: Colors.grey.shade300, // Background color fixed
               ),
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
+                      controller: searchC,
+                      onChanged: (value) {
+                        articalController.searchNews(value); // কল করা হলো
+                      },
                       cursorColor: Colors.black,
-
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         hintText: "search here",
-                        hintStyle: TextStyle(color: White),
                         contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                        fillColor: Colors.grey,
                         border: InputBorder.none,
                       ),
                     ),
@@ -43,11 +46,11 @@ class ProfilePage extends StatelessWidget {
                   Container(
                     height: 50,
                     width: 50,
-                    child: Icon(Icons.search, color: White),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: MainColor,
                     ),
+                    child: const Icon(Icons.search, color: Colors.white),
                   ),
                 ],
               ),
@@ -62,24 +65,31 @@ class ProfilePage extends StatelessWidget {
                   );
                 }
 
-                if (articalController.ArticalNews.isEmpty) {
-                  return const Center(child: Text("No News Found"));
+                if (articalController.filteredNews.isEmpty) {
+                  return  Center(child: Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      color: MainColor,
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Text("No Product Found", style: TextStyle(color: White, fontSize: 25),),
+                  ) );
                 }
 
                 return ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: articalController.ArticalNews.length,
+                  itemCount: articalController.filteredNews.length,
                   itemBuilder: (context, index) {
-                    var article = articalController.ArticalNews[index];
+                    var article = articalController.filteredNews[index];
 
                     return InkWell(
                       onTap: () {
                         Get.to(() => DetailPage(news: article));
                       },
                       child: BottomCard(
-                        image:
-                            article.urlToImage ??
-                            "https://via.placeholder.com/150",
+                        image: article.urlToImage ?? "https://via.placeholder.com/150",
                         title: article.title ?? "No Title Available",
                       ),
                     );

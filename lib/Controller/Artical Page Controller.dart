@@ -8,6 +8,7 @@ class ArticalController extends GetxController {
   RxBool isLoading = false.obs;
 
   RxList<Articles> ArticalNews = <Articles>[].obs;
+  RxList<Articles> filteredNews = <Articles>[].obs;
 
   @override
   void onInit() {
@@ -33,6 +34,8 @@ class ArticalController extends GetxController {
 
         if (res.articles != null) {
           ArticalNews.assignAll(res.articles as Iterable<Articles>);
+          filteredNews.assignAll(res.articles!);
+
         }
       } else {
         log("Server Error: ${response.statusCode}");
@@ -43,4 +46,15 @@ class ArticalController extends GetxController {
       isLoading.value = false;
     }
   }
+  void searchNews(String query) {
+    if (query.isEmpty) {
+      filteredNews.assignAll(ArticalNews);
+    } else {
+      var result = ArticalNews.where((article) =>
+          article.title!.toLowerCase().contains(query.toLowerCase())).toList();
+      filteredNews.assignAll(result);
+    }
+  }
+
+
 }
