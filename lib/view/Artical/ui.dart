@@ -36,7 +36,7 @@ class ProfilePage extends StatelessWidget {
                         articalController.searchNews(value); // কল করা হলো
                       },
                       cursorColor: Colors.black,
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: "search here",
                         contentPadding: EdgeInsets.symmetric(horizontal: 10),
                         border: InputBorder.none,
@@ -66,20 +66,25 @@ class ProfilePage extends StatelessWidget {
                 }
 
                 if (articalController.filteredNews.isEmpty) {
-                  return  Center(child: Container(
-                    alignment: Alignment.center,
-                    height: 100,
-                    width: 300,
-                    decoration: BoxDecoration(
-                      color: MainColor,
-                      borderRadius: BorderRadius.circular(30),
+                  return Center(
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 100,
+                      width: 300,
+                      decoration: BoxDecoration(
+                        color: MainColor,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Text(
+                        "No Product Found",
+                        style: TextStyle(color: White, fontSize: 25),
+                      ),
                     ),
-                    child: Text("No Product Found", style: TextStyle(color: White, fontSize: 25),),
-                  ) );
+                  );
                 }
 
                 return ListView.builder(
-                  physics: const BouncingScrollPhysics(),
+                  physics: BouncingScrollPhysics(),
                   itemCount: articalController.filteredNews.length,
                   itemBuilder: (context, index) {
                     var article = articalController.filteredNews[index];
@@ -89,7 +94,9 @@ class ProfilePage extends StatelessWidget {
                         Get.to(() => DetailPage(news: article));
                       },
                       child: BottomCard(
-                        image: article.urlToImage ?? "https://via.placeholder.com/150",
+                        image:
+                            article.urlToImage ??
+                            "https://via.placeholder.com/150",
                         title: article.title ?? "No Title Available",
                       ),
                     );

@@ -21,7 +21,7 @@ class BottomCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // ইমেজ কন্টেইনার
+
           Container(
             margin: const EdgeInsets.all(5),
             height: 80,
@@ -31,7 +31,7 @@ class BottomCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
                 image: NetworkImage(image),
-                fit: BoxFit.cover, // ইমেজটি সুন্দরভাবে বক্সে ফিট হবে
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -45,7 +45,7 @@ class BottomCard extends StatelessWidget {
                   Text(
                     title,
                     maxLines: 2,
-                    overflow: TextOverflow.ellipsis, // বড় টেক্সট হলে '...' দেখাবে
+                    overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: White,
                       fontSize: 15,

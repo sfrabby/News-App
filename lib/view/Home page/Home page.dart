@@ -76,8 +76,7 @@ class HomePage extends StatelessWidget {
                       },
                       child: TNewsCont(
                         img:
-                            news.urlToImage ??
-                            "https://via.placeholder.com/150",
+                            news.urlToImage ??  "https://cdn-icons-png.flaticon.com/512/13434/13434972.png",
                         title: news.title ?? "No Title",
                         Author: news.author ?? "Unknown Author",
                         date: news.publishedAt.toString(),
