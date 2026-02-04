@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:news_app_with_getx/Config/AppColors.dart';
 import 'package:get/get.dart';
@@ -14,6 +16,7 @@ class notificationScreen extends StatelessWidget {
       appBar: AppBar(backgroundColor: MainColor,),
       body: FloatingActionButton(onPressed: (){
         notification.showNotification();
+        log("Button Tapped");
       }, child: Icon(Icons.notification_add),),
     );
   }

@@ -10,18 +10,26 @@ import 'package:news_app_with_getx/view/Detail%20Page/Detail%20Page.dart';
 import 'package:news_app_with_getx/view/Home%20page/Home%20page.dart';
 import 'package:news_app_with_getx/view/Notification%20Screen/ui.dart';
 
-FlutterLocalNotificationsPlugin notificationsPlugin = FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin notificationsPlugin = FlutterLocalNotificationsPlugin();
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  AndroidInitializationSettings androidSettings = AndroidInitializationSettings("@mipmap/ic_launcher");
 
-  InitializationSettings initializationSettings = InitializationSettings(
-    android: androidSettings
+  const AndroidInitializationSettings androidSettings = AndroidInitializationSettings("@mipmap/ic_launcher");
+
+  const InitializationSettings initializationSettings = InitializationSettings(
+      android: androidSettings
   );
- bool? initialized = await notificationsPlugin.initialize(settings: initializationSettings);
-log("Notification $initialized");
-  runApp( const MyApp());
+
+
+  await notificationsPlugin.initialize(
+    initializationSettings,
+    onDidReceiveNotificationResponse: (details) {
+
+    },
+  );
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +41,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme()),
       debugShowCheckedModeBanner: false,
-      home: BottomBar(),
+      home: notificationScreen(),
     );
   }
 }

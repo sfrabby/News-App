@@ -1,25 +1,27 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 
-import '../main.dart';
-
 class notificationC extends GetxController {
+  final FlutterLocalNotificationsPlugin _localNoti = FlutterLocalNotificationsPlugin();
+
+  // Notification Controller.dart
   Future<void> showNotification() async {
-    AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
-      "fazle",
-      "This is notification",
-      priority: Priority.max,
+    const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
+      "fazle_channel_id",
+      "Fazle Notification",
       importance: Importance.max,
+      priority: Priority.high,
     );
-    NotificationDetails NotiDetails = NotificationDetails(
+
+    const NotificationDetails notiDetails = NotificationDetails(
       android: androidDetails,
     );
 
-    notificationsPlugin.show(
-      id: 0,
-      title: "Samprotik somoy",
-      body: "New News",
-      notificationDetails: NotiDetails,
+    await _localNoti.show(
+      0,                // id
+      "Samprotik somoy", // title
+      "New News",        // body
+      notiDetails,       // notificationDetails
     );
   }
 }
