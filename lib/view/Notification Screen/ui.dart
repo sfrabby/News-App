@@ -13,7 +13,8 @@ class notificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: MainColor,),
+      appBar: AppBar(backgroundColor: MainColor,
+      title:  Text("Hello"),),
       body: FloatingActionButton(onPressed: (){
         notification.showNotification();
         log("Button Tapped");
